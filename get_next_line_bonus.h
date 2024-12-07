@@ -6,7 +6,7 @@
 /*   By: yaboukir <yaboukir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 20:22:06 by yaboukir          #+#    #+#             */
-/*   Updated: 2024/11/29 22:03:23 by yaboukir         ###   ########.fr       */
+/*   Updated: 2024/12/03 13:21:07 by yaboukir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,7 @@
 # include <fcntl.h> // it is forbidden to use this lib, remove it later.
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
-
-# ifndef FD_SETSIZE
-#  define FD_SETSIZE 1024
+#  define BUFFER_SIZE 1042
 # endif
 
 char	*get_next_line(int fd);

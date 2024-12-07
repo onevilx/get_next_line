@@ -6,13 +6,13 @@
 /*   By: yaboukir <yaboukir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 16:28:42 by yaboukir          #+#    #+#             */
-/*   Updated: 2024/11/30 17:29:04 by yaboukir         ###   ########.fr       */
+/*   Updated: 2024/12/03 13:53:41 by yaboukir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*restfd(char *str)
+char	*last_line(char *str)
 {
 	char	*rest;
 	int		i;
@@ -38,7 +38,7 @@ char	*restfd(char *str)
 	return (rest);
 }
 
-char	*next_line(char *str)
+char	*first_line(char *str)
 {
 	char	*res;
 	int		x;
@@ -69,7 +69,7 @@ char	*ft_reading(char *str, int fd)
 	char	*buffer;
 	int		bytes;
 
-	buffer = malloc(BUFFER_SIZE + 1);
+	buffer = malloc((size_t)BUFFER_SIZE + 1);
 	if (!buffer)
 	{
 		free(str);
@@ -101,9 +101,9 @@ char	*get_next_line(int fd)
 	str = ft_reading(str, fd);
 	if (!str)
 		return (NULL);
-	result = next_line(str);
+	result = first_line(str);
 	if (!result)
 		return (free(str), str = NULL, NULL);
-	str = restfd(str);
+	str = last_line(str);
 	return (result);
 }

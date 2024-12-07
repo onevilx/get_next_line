@@ -6,13 +6,13 @@
 /*   By: yaboukir <yaboukir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 20:22:44 by yaboukir          #+#    #+#             */
-/*   Updated: 2024/11/30 17:31:43 by yaboukir         ###   ########.fr       */
+/*   Updated: 2024/12/03 14:11:28 by yaboukir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-char	*resfd(char *str)
+char	*last_line(char *str)
 {
 	char	*rest;
 	int		i;
@@ -38,7 +38,7 @@ char	*resfd(char *str)
 	return (rest);
 }
 
-char	*next_line(char *str)
+char	*first_line(char *str)
 {
 	char	*res;
 	int		x;
@@ -69,7 +69,7 @@ char	*ft_reading(char *str, int fd)
 	char	*buffer;
 	int		bytes;
 
-	buffer = malloc(BUFFER_SIZE + 1);
+	buffer = malloc((size_t)BUFFER_SIZE + 1);
 	if (!buffer)
 	{
 		free(str);
@@ -101,9 +101,9 @@ char	*get_next_line(int fd)
 	str[fd] = ft_reading(str[fd], fd);
 	if (!str[fd])
 		return (NULL);
-	result = next_line(str[fd]);
+	result = first_line(str[fd]);
 	if (!result)
 		return (free(str[fd]), str[fd] = NULL, NULL);
-	str[fd] = resfd(str[fd]);
+	str[fd] = last_line(str[fd]);
 	return (result);
 }
